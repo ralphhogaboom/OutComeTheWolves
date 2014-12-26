@@ -14,9 +14,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
-import com.hideyourfire.ralphhogaboom.OutComeTheWolves.*;
+import com.hideyourfire.ralphhogaboom.OutComeTheWolves.Main;
 
 public class EventListener implements Listener {
+	
+	Main thisInstance;
 	
 	public static int randInt(int min, int max) {
 		Random rand = new Random();
@@ -46,7 +48,8 @@ public class EventListener implements Listener {
 			if (Main.getPlugin().getConfig().getString("notifications").equalsIgnoreCase("yes")) {
 				Main.getPlugin().getLogger().info(entity.getType() + " spawned near " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ());
 			}
-			if (random < Main.getKey("aggressiveWolvesChance")) {
+			if (random < thisInstance.getKey("aggressiveWolvesChance")) {
+				Main.getPlugin().getLogger().info("aggressiveWolvesChance = " + thisInstance.getKey("aggressiveWolvesChance"));
 				Wolf wolf = (Wolf)entity;
 				wolf.setAngry(true);
 				// get nearby entities
@@ -63,7 +66,8 @@ public class EventListener implements Listener {
 				}
 			}
 		} else {
-			if (random < Main.getPlugin().getKey("changeOtherMobsChance")) {
+			if (random < thisInstance.getKey("changeOtherMobsChance")) {
+				Main.getPlugin().getLogger().info("changeOtherMobsChance = " + thisInstance.getKey("changeOtherMobsChance"));
 				if (loc.getY() > 65) {
 					event.setCancelled(true);
 					entity = loc.getWorld().spawnEntity(loc, EntityType.WOLF);
