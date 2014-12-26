@@ -1,2 +1,7 @@
-about:
-    version: 0.1
+# What is the percentage chance that a wolf should spawn aggressive?
+aggressiveWolves: 50
+# What is the percentage chance that any hostile mob should spawn as a wolf instead?
+otherMobsIntoWolves: 5
+# Turn aggressive wolf notifications on or off
+# 0 for on, 1 for off
+notifications: 0
