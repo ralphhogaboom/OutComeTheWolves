@@ -1,3 +1,10 @@
 name: OutComeTheWolves
 main: com.hideyourfire.ralphhogaboom.OutComeTheWolves.Main
 version: 0.1
+permissions:
+    outcomethewolves.bypass:
+        description: Prevents players from being targeted by angry wolves.
+        default: false
+    outcomethewolves.own:
+        description: If a wolf spawns nearby, players with this permission will automatically be the dogs' owner.
+        default: false

@@ -1,7 +1,29 @@
+##########################################################################
+#                      OUT COME THE WOLVES
+#
+# Use the settings in this file to configure OUT COME THE WOLVES.
+#
+#  otherMobsIntoWolves can be any number between 0 and 100.
+#     To make more wolves on your server, set the otherMobsIntoWolves 
+#     value higher. This will only affect mobs above level 65. 
+#
+#  aggressiveWolves can be any number between 0 and 100. 
+#     To increase the number of angry wolves you find, set 
+#     aggressiveWolves to a number closer to 100. 
+# 
+#  If you run into any problems, please submit a ticket on
+#  Bukkit or Github.
+# 
+#.........................................................................
+#
+#     This software is open source; I welcome patches, forks, etc
+#     at https://github.com/ralphhogaboom/OutComeTheWolves
+# 
+#     Feel free to join me at my home server, Hide Your Fire!
+#                   IP: play.hideyourfire.com
+#
+##########################################################################
 # What is the percentage chance that a wolf should spawn aggressive?
-aggressiveWolves: 50
-# What is the percentage chance that any hostile mob should spawn as a wolf instead?
+aggressiveWolves: 20
+# What is the percentage chance that any mob should spawn as a wolf instead?
 otherMobsIntoWolves: 5
-# Turn aggressive wolf notifications on or off
-# 0 for on, 1 for off
-notifications: 0
