@@ -29,11 +29,14 @@ public class EventListener implements Listener {
 
 	@EventHandler
 	public void onMobTarget(EntityTargetEvent event) {
-		Entity target = event.getTarget();
-		if (target instanceof Player) {
-			Player player = (Player)target;
-			if (player.hasPermission("outcomethewolves.bypass")) {
-				event.setCancelled(true);
+		Entity mob = event.getEntity();
+		if (mob instanceof Wolf) {
+			Entity target = event.getTarget();
+			if (target instanceof Player) {
+				Player player = (Player)target;
+				if (player.hasPermission("outcomethewolves.bypass")) {
+					event.setCancelled(true);
+				}
 			}
 		}
 	}
@@ -45,7 +48,6 @@ public class EventListener implements Listener {
 		int random = randInt(0, 99);
 		if (entity.getType() == EntityType.WOLF) {
 			if (random < thisInstance.getKey("aggressiveWolvesChance")) {
-				Main.getPlugin().getLogger().info("Spawning an angry wolf near " + loc.getX() + " " + loc.getY() + " " + loc.getZ() + ".");
 				Wolf wolf = (Wolf)entity;
 				wolf.setAngry(true);
 				for (Entity nearbyEntity : wolf.getNearbyEntities(loc.getX(), loc.getY(), loc.getZ())) {
