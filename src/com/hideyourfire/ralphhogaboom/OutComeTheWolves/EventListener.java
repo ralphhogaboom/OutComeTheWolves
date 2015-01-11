@@ -11,6 +11,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+
 import com.hideyourfire.ralphhogaboom.OutComeTheWolves.Main;
 
 public class EventListener implements Listener {
@@ -60,10 +62,12 @@ public class EventListener implements Listener {
 				}
 			}
 		} else {
-			if (random < thisInstance.getKey("changeOtherMobsChance")) {
-				if (loc.getY() > 65) {
-					event.setCancelled(true);
-					entity = loc.getWorld().spawnEntity(loc, EntityType.WOLF);
+			if (event.getSpawnReason() == SpawnReason.NATURAL) {
+				if (random < thisInstance.getKey("changeOtherMobsChance")) {
+					if (loc.getY() > 65) {
+						event.setCancelled(true);
+						entity = loc.getWorld().spawnEntity(loc, EntityType.WOLF);
+					}
 				}
 			}
 		}
