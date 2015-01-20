@@ -24,6 +24,13 @@
 #
 ##########################################################################
 # What is the percentage chance that a wolf should spawn aggressive?
+
 aggressiveWolves: 20
+
 # What is the percentage chance that any mob should spawn as a wolf instead?
+
 otherMobsIntoWolves: 5
+
+# Should we display more detailed debug output in the console window? Turn this to true to get more details.
+
+debug: false

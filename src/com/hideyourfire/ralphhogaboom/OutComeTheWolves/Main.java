@@ -9,6 +9,7 @@ public class Main extends JavaPlugin {
 	private static Plugin plugin;
 	private int aggressiveWolvesChance;
 	private int changeOtherMobsChance;
+	private boolean debug = false;
 
 	public void onEnable() {	
 		plugin = this;
@@ -17,6 +18,8 @@ public class Main extends JavaPlugin {
 		this.getConfig();
 		aggressiveWolvesChance = this.getConfig().getInt("aggressiveWolves");
 		changeOtherMobsChance = this.getConfig().getInt("otherMobsIntoWolves");
+		debug = this.getConfig().getBoolean("debug");
+		Main.getPlugin().getLogger().info("Debug is " + doDebug());
 	}
 	
 	private void registerEvents(org.bukkit.plugin.Plugin plugin, Listener...listeners) {
@@ -50,5 +53,9 @@ public class Main extends JavaPlugin {
 		if (key.equalsIgnoreCase("changeOtherMobsChance")) {
 			changeOtherMobsChance = value;
 		}
+	}
+	
+	public boolean doDebug() {
+		return debug;
 	}
 }

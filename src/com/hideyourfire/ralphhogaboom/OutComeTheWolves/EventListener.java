@@ -38,6 +38,9 @@ public class EventListener implements Listener {
 				Player player = (Player)target;
 				if (player.hasPermission("outcomethewolves.bypass")) {
 					event.setCancelled(true);
+					if (thisInstance.doDebug()) {
+						Main.getPlugin().getLogger().info(player.getName() + " has outcomethewolves.bypass permission node, skipping mob targetting.");
+					}
 				}
 			}
 		}
@@ -45,6 +48,9 @@ public class EventListener implements Listener {
 	
 	@EventHandler
 	public void onWolfSpawn(CreatureSpawnEvent event) {
+		if (!(event.getLocation().getWorld().getEnvironment().toString().contains("NORMAL"))) {
+			return;
+		}
 		Location loc = event.getLocation();
 		Entity entity = event.getEntity();
 		int random = randInt(0, 99);
@@ -56,6 +62,9 @@ public class EventListener implements Listener {
 					if (nearbyEntity instanceof Player) {
 						Player target = (Player)nearbyEntity;
 						if (target.hasPermission("outcomethewolves.own")) {
+							if (thisInstance.doDebug()) {
+								Main.getPlugin().getLogger().info(target.getName() + " has outcomethewolves.own permission node, converting wolf into pet.");
+							}
 							wolf.setOwner(target);
 						}
 					}
@@ -67,6 +76,10 @@ public class EventListener implements Listener {
 					if (loc.getY() > 65) {
 						event.setCancelled(true);
 						entity = loc.getWorld().spawnEntity(loc, EntityType.WOLF);
+						if (thisInstance.doDebug()) {
+							Main.getPlugin().getLogger().info("Spawning ANGRY WOLF in " + loc.getWorld().getName() + " near " + loc.getX() + " " + loc.getY() + " " + loc.getZ());
+						}
+
 					}
 				}
 			}
