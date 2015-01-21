@@ -56,6 +56,9 @@ public class EventListener implements Listener {
 		int random = randInt(0, 99);
 		if (entity.getType() == EntityType.WOLF) {
 			if (random < thisInstance.getKey("aggressiveWolvesChance")) {
+				if (thisInstance.doDebug()) {
+					Main.getPlugin().getLogger().info("Setting wolf angry ...");
+				}
 				Wolf wolf = (Wolf)entity;
 				wolf.setAngry(true);
 				for (Entity nearbyEntity : wolf.getNearbyEntities(loc.getX(), loc.getY(), loc.getZ())) {
@@ -66,21 +69,21 @@ public class EventListener implements Listener {
 								Main.getPlugin().getLogger().info(target.getName() + " has outcomethewolves.own permission node, converting wolf into pet.");
 							}
 							wolf.setOwner(target);
+						} else {
+							wolf.setTarget(target);
 						}
 					}
 				}
 			}
 		} else {
-			if (event.getSpawnReason() == SpawnReason.NATURAL) {
-				if (random < thisInstance.getKey("changeOtherMobsChance")) {
-					if (loc.getY() > 65) {
-						event.setCancelled(true);
-						entity = loc.getWorld().spawnEntity(loc, EntityType.WOLF);
-						if (thisInstance.doDebug()) {
-							Main.getPlugin().getLogger().info("Spawning ANGRY WOLF in " + loc.getWorld().getName() + " near " + loc.getX() + " " + loc.getY() + " " + loc.getZ());
-						}
-
+			if (random < thisInstance.getKey("changeOtherMobsChance")) {
+				if (loc.getY() > 65) {
+					event.setCancelled(true);
+					entity = loc.getWorld().spawnEntity(loc, EntityType.WOLF);
+					if (thisInstance.doDebug()) {
+						Main.getPlugin().getLogger().info("Spawning WOLF in " + loc.getWorld().getName() + " near " + loc.getX() + " " + loc.getY() + " " + loc.getZ());
 					}
+
 				}
 			}
 		}

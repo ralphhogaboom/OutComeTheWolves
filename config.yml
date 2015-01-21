@@ -31,6 +31,14 @@ aggressiveWolves: 20
 
 otherMobsIntoWolves: 5
 
+# Should the plugin find existing wolves and make them angry / target players? 
+# If yes, set this to true.
+# Consider this the super-aggressive option - nearby wolves will actively hunt 
+# any players they find. It can get pretty bloody, and this option uses a little 
+# more CPU than it otherwise would.
+
+alwaysHunting: false
+
 # Should we display more detailed debug output in the console window? Turn this to true to get more details.
 
 debug: false
