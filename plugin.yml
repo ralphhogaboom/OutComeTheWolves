@@ -1,6 +1,6 @@
 name: OutComeTheWolves
 main: com.hideyourfire.ralphhogaboom.OutComeTheWolves.Main
-version: Bluebird, build 20150120
+version: Bluebird, build 20150121
 permissions:
     outcomethewolves.bypass:
         description: Prevents players from being targeted by angry wolves.
